@@ -1,0 +1,345 @@
+import tkinter as tk
+from tkinter import ttk, messagebox
+import json
+import os
+import random
+from datetime import datetime
+
+ARQUIVO_DADOS = 'dados_cruzada.json'
+
+JOGADORES_INICIAIS = [
+    {"nome": "Tokuki", "equipe": "A"}, {"nome": "Alcamax", "equipe": "A"}, {"nome": "Hajden", "equipe": "A"},
+    {"nome": "Xizord", "equipe": "A"}, {"nome": "Sheyla97", "equipe": "A"}, {"nome": "Thaufa", "equipe": "A"},
+    {"nome": "Wraths", "equipe": "A"}, {"nome": "cdo", "equipe": "A"}, {"nome": "Kaely", "equipe": "A"},
+    {"nome": "magrovei", "equipe": "A"}, {"nome": "PipuRLZ", "equipe": "A"}, {"nome": "MidnightLady", "equipe": "A"},
+    {"nome": "N99 • BL4KZ", "equipe": "A"}, {"nome": "ATHENA武", "equipe": "A"}, {"nome": "Thauf4s", "equipe": "A"},
+    {"nome": "Alkamax", "equipe": "A"}, {"nome": "MtDoiido", "equipe": "A"}, {"nome": "ShadowCroww", "equipe": "A"},
+    {"nome": "ZK丶Smith", "equipe": "A"}, {"nome": "くそAkm", "equipe": "A"},
+    {"nome": "secovei", "equipe": "B"}, {"nome": "AmandaRR", "equipe": "B"}, {"nome": "Feek", "equipe": "B"},
+    {"nome": "tatãoxd", "equipe": "B"}, {"nome": "nos4a2", "equipe": "B"}, {"nome": "MasterSá", "equipe": "B"},
+    {"nome": "MagodoBad", "equipe": "B"}, {"nome": "Guerra07", "equipe": "B"}, {"nome": "ByClevaツ", "equipe": "B"},
+    {"nome": "FOOOFINHA", "equipe": "B"}, {"nome": "愛RicoSurf", "equipe": "B"}, {"nome": "LndYnk", "equipe": "B"},
+    {"nome": "EduElfoPower", "equipe": "B"}, {"nome": "LITRAÇODE4", "equipe": "B"}, {"nome": "robinUllr", "equipe": "B"},
+    {"nome": "Gumaシ", "equipe": "B"}, {"nome": "MERTONOMO", "equipe": "B"}, {"nome": "Fizz", "equipe": "B"},
+    {"nome": "zumbakura", "equipe": "B"}, {"nome": "Joy", "equipe": "B"},
+    {"nome": "Colgate", "equipe": "Reserva"}
+]
+
+def parse_valor(val_str):
+    if not val_str:
+        return 0
+    val = str(val_str).lower().replace('.', '').replace(',', '').strip()
+    try:
+        if val.endswith('m'):
+            return int(float(val[:-1]) * 1000000)
+        elif val.endswith('k'):
+            return int(float(val[:-1]) * 1000)
+        return int(val)
+    except:
+        return 0
+
+class CruzadaApp(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("Gerenciador de Cruzada - Interface Gráfica")
+        self.geometry("1050x700")
+        self.configure(padx=10, pady=10)
+        
+        self.dados = self.carregar_dados()
+        self.player_vars = []
+        
+        self.criar_interface()
+
+    def carregar_dados(self):
+        dados_atuais = []
+        if os.path.exists(ARQUIVO_DADOS):
+            try:
+                with open(ARQUIVO_DADOS, 'r', encoding='utf-8') as f:
+                    dados_atuais = json.load(f)
+            except Exception:
+                pass
+        
+        if not dados_atuais:
+            for p in JOGADORES_INICIAIS:
+                dados_atuais.append({
+                    "nome": p["nome"], "equipe": p["equipe"], "bidou": False, "bid_valor": 0,
+                    "presente": False, "ganhou_caixa": False, "elegivel_sorteio": False
+                })
+        
+        while len(dados_atuais) < 50:
+            dados_atuais.append({
+                "nome": "", "equipe": "", "bidou": False, "bid_valor": 0,
+                "presente": False, "ganhou_caixa": False, "elegivel_sorteio": False
+            })
+            
+        return dados_atuais
+
+    def salvar_dados_json(self):
+        novos_dados = []
+        for p in self.player_vars:
+            novos_dados.append({
+                "nome": p['nome_var'].get().strip(),
+                "equipe": p['equipe_var'].get().strip(),
+                "bidou": p['bidou'].get(),
+                "bid_valor": parse_valor(p['valor'].get()),
+                "presente": p['presente'].get(),
+                "ganhou_caixa": p['caixa'].get(),
+                "elegivel_sorteio": p['elegivel'].get(),
+                "data_registro": datetime.now().strftime("%Y-%m-%d")
+            })
+        
+        with open(ARQUIVO_DADOS, 'w', encoding='utf-8') as f:
+            json.dump(novos_dados, f, indent=4, ensure_ascii=False)
+        self.dados = novos_dados
+        messagebox.showinfo("Sucesso", "Dados salvos com sucesso!")
+
+    def limpar_bids(self):
+        resposta = messagebox.askyesno("Confirmação", "Tem certeza que deseja limpar TODOS os Bids e marcações (Elegível e Presente)? Isso irá zerar a semana para todos.")
+        if resposta:
+            for p in self.player_vars:
+                p['bidou'].set(False)
+                p['valor'].set("")
+                p['presente'].set(False)
+                p['elegivel'].set(False)
+            messagebox.showinfo("Limpeza concluída", "Todos os campos de Bids e presenças foram limpos na tela. Lembre-se de 'Salvar Dados' para gravar no arquivo.")
+
+    def criar_interface(self):
+        frame_totais = ttk.LabelFrame(self, text="Espólios Totais da Cruzada", padding=(10, 5))
+        frame_totais.pack(fill="x", pady=(0, 10))
+
+        ttk.Label(frame_totais, text="Morions:").grid(row=0, column=0, padx=5, pady=5)
+        self.var_morions = tk.StringVar(value="200")
+        ttk.Entry(frame_totais, textvariable=self.var_morions, width=10).grid(row=0, column=1, padx=5)
+
+        ttk.Label(frame_totais, text="Diamantes:").grid(row=0, column=2, padx=5, pady=5)
+        self.var_diamantes = tk.StringVar(value="1096")
+        ttk.Entry(frame_totais, textvariable=self.var_diamantes, width=10).grid(row=0, column=3, padx=5)
+
+        ttk.Label(frame_totais, text="Moedas Guild:").grid(row=0, column=4, padx=5, pady=5)
+        self.var_moedas = tk.StringVar(value="100000")
+        ttk.Entry(frame_totais, textvariable=self.var_moedas, width=10).grid(row=0, column=5, padx=5)
+
+        ttk.Label(frame_totais, text="Sacos de Ouro:").grid(row=0, column=6, padx=5, pady=5)
+        self.var_ouro = tk.StringVar(value="100")
+        ttk.Entry(frame_totais, textvariable=self.var_ouro, width=10).grid(row=0, column=7, padx=5)
+
+        frame_lista = ttk.LabelFrame(self, text="Jogadores (Equipes A, B e Reservas)", padding=(10, 10))
+        frame_lista.pack(fill="both", expand=True, pady=(0, 10))
+
+        canvas = tk.Canvas(frame_lista, borderwidth=0, highlightthickness=0)
+        scrollbar = ttk.Scrollbar(frame_lista, orient="vertical", command=canvas.yview)
+        self.scrollable_frame = ttk.Frame(canvas)
+
+        self.scrollable_frame.bind(
+            "<Configure>",
+            lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+        )
+
+        canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw")
+        canvas.configure(yscrollcommand=scrollbar.set)
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+
+        cabecalhos = ["Nome", "Equipe", "Bidou?", "Valor do Bid (ex: 30m)", "Presente?", "Já Ganhou Caixa?", "Elegível Sorteio?"]
+        for col, texto in enumerate(cabecalhos):
+            ttk.Label(self.scrollable_frame, text=texto, font=("Arial", 10, "bold")).grid(row=0, column=col, padx=10, pady=5, sticky="w")
+
+        for i, p in enumerate(self.dados):
+            row = i + 1
+            
+            var_nome = tk.StringVar(value=p.get('nome', ''))
+            ent_nome = ttk.Entry(self.scrollable_frame, textvariable=var_nome, width=18)
+            ent_nome.grid(row=row, column=0, padx=10, pady=2, sticky="w")
+            
+            var_equipe = tk.StringVar(value=p.get('equipe', ''))
+            cb_equipe = ttk.Combobox(self.scrollable_frame, textvariable=var_equipe, values=["A", "B", "Reserva", ""], width=8, state="normal")
+            cb_equipe.grid(row=row, column=1, padx=10, pady=2)
+            
+            var_bidou = tk.BooleanVar(value=p.get('bidou', False))
+            chk_bidou = ttk.Checkbutton(self.scrollable_frame, variable=var_bidou)
+            chk_bidou.grid(row=row, column=2, padx=10, pady=2)
+            
+            val_atual = p.get('bid_valor', 0)
+            val_str = "" if val_atual == 0 else str(val_atual)
+            var_valor = tk.StringVar(value=val_str)
+            ent_valor = ttk.Entry(self.scrollable_frame, textvariable=var_valor, width=15)
+            ent_valor.grid(row=row, column=3, padx=10, pady=2)
+            
+            var_presente = tk.BooleanVar(value=p.get('presente', False))
+            chk_presente = ttk.Checkbutton(self.scrollable_frame, variable=var_presente)
+            chk_presente.grid(row=row, column=4, padx=10, pady=2)
+            
+            var_caixa = tk.BooleanVar(value=p.get('ganhou_caixa', False))
+            chk_caixa = ttk.Checkbutton(self.scrollable_frame, variable=var_caixa)
+            chk_caixa.grid(row=row, column=5, padx=10, pady=2)
+            
+            var_elegivel = tk.BooleanVar(value=p.get('elegivel_sorteio', False))
+            chk_elegivel = ttk.Checkbutton(self.scrollable_frame, variable=var_elegivel)
+            chk_elegivel.grid(row=row, column=6, padx=10, pady=2)
+            
+            v_dict = {
+                'nome_var': var_nome,
+                'equipe_var': var_equipe,
+                'bidou': var_bidou,
+                'valor': var_valor,
+                'presente': var_presente,
+                'caixa': var_caixa,
+                'elegivel': var_elegivel
+            }
+            self.player_vars.append(v_dict)
+
+            def auto_check_elegivel(var_name, index, mode, v=v_dict):
+                try:
+                    valor_num = parse_valor(v['valor'].get())
+                    if valor_num >= 30000000:
+                        v['elegivel'].set(True)
+                        v['bidou'].set(True)
+                    else:
+                        v['elegivel'].set(False)
+                except:
+                    pass
+            var_valor.trace_add("write", auto_check_elegivel)
+
+        frame_botoes = ttk.Frame(self)
+        frame_botoes.pack(fill="x", pady=10)
+        
+        btn_salvar = ttk.Button(frame_botoes, text="Salvar Dados", command=self.salvar_dados_json)
+        btn_salvar.pack(side="left", padx=10)
+
+        btn_calc = ttk.Button(frame_botoes, text="Calcular Distribuição", command=self.calcular_distribuicao)
+        btn_calc.pack(side="left", padx=10)
+        
+        btn_limpar = ttk.Button(frame_botoes, text="Limpar Todos os Bids", command=self.limpar_bids)
+        btn_limpar.pack(side="left", padx=10)
+        
+        btn_sorteio = ttk.Button(frame_botoes, text="Realizar Sorteio da Caixa", command=self.realizar_sorteio)
+        btn_sorteio.pack(side="right", padx=10)
+
+    def calcular_distribuicao(self):
+        try:
+            tot_morions = int(self.var_morions.get())
+            tot_diamantes = int(self.var_diamantes.get())
+            tot_moedas = int(self.var_moedas.get())
+            tot_ouro = int(self.var_ouro.get())
+        except ValueError:
+            messagebox.showerror("Erro", "Os valores de espólio devem ser números.")
+            return
+
+        jogadores_validos = []
+        for p in self.player_vars:
+            nome = p['nome_var'].get().strip()
+            if not nome:
+                continue
+                
+            if p['bidou'].get():
+                val = parse_valor(p['valor'].get())
+                if val > 0:
+                    jogadores_validos.append({"nome": nome, "equipe": p['equipe_var'].get(), "valor": val})
+        
+        total_bids = sum(j['valor'] for j in jogadores_validos)
+        
+        if total_bids == 0:
+            messagebox.showwarning("Aviso", "Nenhum valor de bid registrado.")
+            return
+
+        resultados = []
+        tot_m_dist = 0
+        tot_d_dist = 0
+        tot_c_dist = 0
+        tot_o_dist = 0
+
+        for j in jogadores_validos:
+            pct = j['valor'] / total_bids
+            
+            g_morions = int(tot_morions * pct)
+            g_diamantes = int(tot_diamantes * pct)
+            g_moedas = int((tot_moedas * pct) // 1000) * 1000
+            g_ouro = int(tot_ouro * pct)
+            
+            tot_m_dist += g_morions
+            tot_d_dist += g_diamantes
+            tot_c_dist += g_moedas
+            tot_o_dist += g_ouro
+            
+            resultados.append({
+                "nome": j['nome'],
+                "equipe": j['equipe'],
+                "bid": j['valor'],
+                "pct": pct,
+                "morions": g_morions,
+                "diamantes": g_diamantes,
+                "moedas": g_moedas,
+                "ouro": g_ouro
+            })
+
+        sobra_m = tot_morions - tot_m_dist
+        sobra_d = tot_diamantes - tot_d_dist
+        sobra_c = tot_moedas - tot_c_dist
+        sobra_o = tot_ouro - tot_o_dist
+
+        alcamax_encontrado = False
+        for r in resultados:
+            if r['nome'].lower() == 'alcamax':
+                r['morions'] += sobra_m
+                r['diamantes'] += sobra_d
+                r['moedas'] += sobra_c
+                r['ouro'] += sobra_o
+                alcamax_encontrado = True
+                break
+        
+        if not alcamax_encontrado and (sobra_m > 0 or sobra_d > 0 or sobra_c > 0 or sobra_o > 0):
+            resultados.append({
+                "nome": "Alcamax (Sobras)",
+                "equipe": "A",
+                "bid": 0,
+                "pct": 0.0,
+                "morions": sobra_m,
+                "diamantes": sobra_d,
+                "moedas": sobra_c,
+                "ouro": sobra_o
+            })
+
+        if hasattr(self, 'win_res') and self.win_res.winfo_exists():
+            self.win_res.destroy()
+
+        self.win_res = tk.Toplevel(self)
+        self.win_res.title("Resultado da Distribuição")
+        self.win_res.geometry("600x500")
+        
+        text_area = tk.Text(self.win_res, font=("Courier", 10), padx=10, pady=10)
+        text_area.pack(fill="both", expand=True)
+        
+        texto_final = f"TOTAL ARRECADADO: {total_bids:,}\n"
+        texto_final += "="*50 + "\n"
+        
+        for r in resultados:
+            texto_final += f"\n[{r['equipe']}] {r['nome']} | Bid: {r['bid']:,} ({r['pct']*100:.2f}%)\n"
+            texto_final += f"  > Morions: {r['morions']}\n"
+            texto_final += f"  > Diamantes: {r['diamantes']}\n"
+            texto_final += f"  > Moedas: {r['moedas']}\n"
+            texto_final += f"  > Ouro: {r['ouro']}\n"
+            
+        text_area.insert("1.0", texto_final)
+        text_area.configure(state="disabled")
+
+    def realizar_sorteio(self):
+        # A regra nova: O jogador deve estar elegível (doou 30m) E NÃO PODE ter ganho a caixa ("caixa" precisa ser False)
+        candidatos = [
+            p['nome_var'].get().strip() 
+            for p in self.player_vars 
+            if p['elegivel'].get() and not p['caixa'].get() and p['nome_var'].get().strip()
+        ]
+        
+        if not candidatos:
+            messagebox.showinfo("Sorteio", "Nenhum jogador está marcado como elegível ao sorteio (ou todos os elegíveis já ganharam a caixa).")
+            return
+        
+        vencedor = random.choice(candidatos)
+        msg = f"Jogadores no sorteio: {len(candidatos)}\n\n" + ", ".join(candidatos) + "\n\n"
+        msg += f"🎉 O VENCEDOR DA CAIXA É: {vencedor.upper()} 🎉"
+        
+        messagebox.showinfo("Resultado do Sorteio da Caixa", msg)
+
+if __name__ == '__main__':
+    app = CruzadaApp()
+    app.mainloop()
