@@ -37,6 +37,14 @@ O **Gerenciador de Cruzada** resolve esse problema calculando em segundos a porc
 
 ![Resultado da Distribuição](Captura%20de%20tela%202026-08-29%20184752.png)
 
+### ⚖️ Regra de Redondeio e "Imposto do Líder" (Alcamax)
+
+Como os itens do jogo não podem ser divididos de forma fracionada (não existem 0.2 diamantes, meio saco de ouro ou frações de morions e moedas de guilda), o programa aplica **arredondamento sempre para baixo** para todos os participantes.
+
+Como resultado dessa matemática, geram-se "sobras" de cada recurso. O programa calcula o acumulado dessas sobras e **destina 100% dos restos para o jogador `Alcamax`**.
+
+Por conta disso, nos relatórios de distribuição, o `Alcamax` aparecerá recebendo um valor ligeiramente maior do que a sua porcentagem exata de doação — garantindo que nenhum item de espólio da guilda seja desperdiçado ou perdido no sistema.
+
 #### 3. Sorteio Transparente do Baú
 *Filtra automaticamente quem já ganhou a caixa na temporada para garantir a rotatividade das recompensas.*
 
