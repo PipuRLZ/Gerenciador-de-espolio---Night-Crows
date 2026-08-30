@@ -1,0 +1,412 @@
+[
+    {
+        "nome": "Tokuki",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 1500000,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Alcamax",
+        "equipe": "A",
+        "bidou": true,
+        "bid_valor": 30000000,
+        "presente": false,
+        "ganhou_caixa": true,
+        "elegivel_sorteio": true,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Hajden",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 25000000,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Xizord",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 2800000,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Sheyla97",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Thaufa",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Wraths",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "cdo",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Kaely",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "magrovei",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "PipuRLZ",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "MidnightLady",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "N99 • BL4KZ",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "ATHENA武",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Thauf4s",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Alkamax",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "MtDoiido",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "ShadowCroww",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "ZK丶Smith",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "くそAkm",
+        "equipe": "A",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "secovei",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "AmandaRR",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Feek",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "tatãoxd",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "nos4a2",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "MasterSá",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "MagodoBad",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Guerra07",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "ByClevaツ",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "FOOOFINHA",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "愛RicoSurf",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "LndYnk",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "EduElfoPower",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "LITRAÇODE4",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "robinUllr",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Gumaシ",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "MERTONOMO",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Fizz",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "zumbakura",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Joy",
+        "equipe": "B",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    },
+    {
+        "nome": "Colgate",
+        "equipe": "Reserva",
+        "bidou": false,
+        "bid_valor": 0,
+        "presente": false,
+        "ganhou_caixa": false,
+        "elegivel_sorteio": false,
+        "data_registro": "2026-08-30"
+    }
+]
