@@ -6,7 +6,7 @@ Um sistema utilitário focado no gerenciamento, cálculo de distribuição de es
 
 ### 📷 Interface do Sistema
 
-![Gerenciador de Cruzada](Captura%20de%20tela%202026-08-30%20133205_2.png)
+![Gerenciador de Cruzada](Captura%20de%20tela%202026-08-30%20133205.png)
 
 ---
 
